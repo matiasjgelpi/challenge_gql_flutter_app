@@ -37,6 +37,9 @@ class ItemList extends StatelessWidget {
 
                   return ListTile(
                     title: Text(country["name"]),
+                    hoverColor: Colors.indigo,
+                    subtitle: Text('Capital: ${country["capital"]}'),
+                    trailing: Text(country["emoji"]),
                   );
                 });
           }),
