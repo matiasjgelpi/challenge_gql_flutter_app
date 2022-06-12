@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:challenge_gql_flutter_app/screens/item_list_screen.dart';
-
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final HttpLink httpLink = HttpLink('https://countries.trevorblades.com/');
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
+      GraphQLClient(
+        cache: GraphQLCache(),
+        link: httpLink,
       ),
-      home: const ItemList(),
+    );
+
+    return GraphQLProvider(
+      client: client,
+      child: MaterialApp(
+        title: 'GraphQl Flutter Demo',
+        theme: ThemeData(colorScheme: const ColorScheme.dark()),
+        home: const ItemList(),
+      ),
     );
   }
 }
