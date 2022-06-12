@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-class ItemList extends StatelessWidget {
-  const ItemList({Key? key}) : super(key: key);
+class CountryList extends StatelessWidget {
+  const CountryList({Key? key}) : super(key: key);
 
   final String getCountries = r"""
     query getCountries{
@@ -38,8 +38,9 @@ class ItemList extends StatelessWidget {
                   return ListTile(
                     title: Text(country["name"]),
                     hoverColor: Colors.indigo,
-                    subtitle: Text('Capital: ${country["capital"]}'),
-                    trailing: Text(country["emoji"]),
+                    subtitle: Text('Capital: ${country["capital"] ?? 'unknown' }'),
+                    leading: Text(country["emoji"]),
+                    trailing: const Icon(Icons.arrow_circle_right_rounded),
                   );
                 });
           }),

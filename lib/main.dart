@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:challenge_gql_flutter_app/screens/item_list_screen.dart';
+import 'package:challenge_gql_flutter_app/screens/country_list_screen.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'GraphQl Flutter Demo',
         theme: ThemeData(colorScheme: const ColorScheme.dark()),
-        home: const ItemList(),
+        home: const CountryList(),
       ),
     );
   }
