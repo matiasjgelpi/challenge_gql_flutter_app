@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:challenge_gql_flutter_app/screens/country_detail_screen.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class CountryList extends StatelessWidget {
@@ -7,6 +8,7 @@ class CountryList extends StatelessWidget {
   final String getCountries = r"""
     query getCountries{
          countries {
+              code
               name
               emoji
               capital    
@@ -35,12 +37,16 @@ class CountryList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final country = countries[index];
 
-                  return ListTile(
-                    title: Text(country["name"]),
-                    hoverColor: Colors.indigo,
-                    subtitle: Text('Capital: ${country["capital"] ?? 'unknown' }'),
-                    leading: Text(country["emoji"]),
-                    trailing: const Icon(Icons.arrow_circle_right_rounded),
+                  return Card(
+                    child: ListTile(
+                      title: Text(country["name"]),
+                      hoverColor: Colors.indigo,
+                      subtitle:
+                          Text('Capital: ${country["capital"] ?? 'unknown'}'),
+                      leading: Text(country["emoji"]),
+                      trailing: const Icon(Icons.arrow_forward_rounded),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => CountryDetail(country["code"]))),
+                    ),
                   );
                 });
           }),
