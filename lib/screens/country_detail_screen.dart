@@ -11,9 +11,13 @@ class CountryDetail extends StatelessWidget {
         name
         currency
         capital
+        native
         phone
         emoji
         languages {
+        name
+        }
+        continent {
         name
         }
     } 
@@ -48,10 +52,13 @@ class CountryDetail extends StatelessWidget {
                   Text('${country["emoji"]}',
                       style: const TextStyle(fontSize: 125)),
                   Text(
-                      'Currency: ${country["currency"]}'
+                      '\nContinent: ${country["continent"]["name"]}'
                       '\nCapital: ${country["capital"]}'
-                      '\nPhone prefix: ${country["phone"]}'
-                      '\nFirst Language: ${country["languages"][0]["name"]}',
+                      '\nFirst Language: ${country["languages"][0]["name"]}'
+                      '\nNative name: ${country["native"]}'
+                      '\nCurrency: ${country["currency"]}'
+                      '\nPhone prefix: ${country["phone"]}',
+
                       style: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.w500)),
 
