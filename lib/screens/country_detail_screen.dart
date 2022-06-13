@@ -41,33 +41,50 @@ class CountryDetail extends StatelessWidget {
 
           var country = result.data?["country"];
 
-
           return Scaffold(
             appBar:
                 AppBar(title: Text('${country["name"]}'), centerTitle: true),
             body: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('${country["emoji"]}',
-                      style: const TextStyle(fontSize: 125)),
-                  Text(
-                      '\nContinent: ${country["continent"]["name"]}'
-                      '\nCapital: ${country["capital"]}'
-                      '\nFirst Language: ${country["languages"][0]["name"]}'
-                      '\nNative name: ${country["native"]}'
-                      '\nCurrency: ${country["currency"]}'
-                      '\nPhone prefix: ${country["phone"]}',
-
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.w500)),
-
-
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: const EdgeInsets.all(0.5),
+                      alignment: Alignment.topCenter,
+                      child: Text('${country["emoji"]}',
+                          style: const TextStyle(fontSize: 250)),
+                    ),
+                  ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                    child: Container(
+                      color: Colors.black38,
+                      height: 275.0,
+                      padding: const EdgeInsets.all(25.0),
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        '\nContinent: ${country["continent"]["name"]}'
+                        '\nCapital: ${country["capital"]}'
+                        '\nFirst Language: ${country["languages"][0]["name"]}'
+                        '\nNative name: ${country["native"]}'
+                        '\nCurrency: ${country["currency"]}'
+                        '\nPhone prefix: ${country["phone"]}',
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
           );
-
         });
   }
 }
